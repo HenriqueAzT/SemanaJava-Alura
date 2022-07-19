@@ -12,7 +12,7 @@ public class App {
 
         // Conexão HTTP - Top 250 filmes
 
-        String url = "https://imdb-api.com/en/API/Top250Movies/k_60m1jzki";
+        String url = "https://mocki.io/v1/9a7c1ca9-29b4-4eb3-8306-1adb9d159060";
         URI endereco = URI.create(url);
         var client = HttpClient.newHttpClient();
         var request = HttpRequest.newBuilder(endereco).GET().build();
@@ -22,16 +22,20 @@ public class App {
         
         // Pegar só os dados dos filmes - Título, poster, classificação
         var parser = new JsonParser();
-
         List<Map<String, String>> listaDeFilmes = parser.parse(body);
 
         // Exibir e manipular os dados
 
-        for (Map<String,String> filme : listaDeFilmes) {
-            System.out.println(filme.get("title"));
-            System.out.println(filme.get("image"));
-            System.out.println(filme.get("imDbRating"));
-            System.out.println(); 
+        for (Map<String, String> filme : listaDeFilmes) {
+            System.out.println();
+            System.out.println("\u001b[38;2;255;31;0m" + filme.get("title") + "\u001b[0m");
+            System.out.println("\u001b[38;2;42;122;228m" +filme.get("image") + "\u001b[0m");
+            System.out.print("\u001b[33;1m" +filme.get("imDbRating")+"\u001b[0m ");
+            Double x = Double.parseDouble(filme.get("imDbRating"));
+            
+            System.out.println("\n");
+            System.out.println("-----------------------------------------------------------------");
         }
     }
 }
+
