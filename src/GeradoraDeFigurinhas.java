@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 public class GeradoraDeFigurinhas {
     
 
-    public void cria(InputStream ist, String nomeArquivo, Float nota) throws IOException {
+    public void cria(InputStream ist, String nomeArquivo) throws IOException {
         //Leitura da imagem
 
         //InputStream ist = new FileInputStream(new File("entrada/filme.jpg"));
@@ -21,7 +21,7 @@ public class GeradoraDeFigurinhas {
         
         //Criação da nova imagem em memória com transparencia e tamanho novo
        
-        imagemOriginal = resizeImage(imagemOriginal, 750, 1200);
+        imagemOriginal = resizeImage(imagemOriginal, 1080, 720);
 
         int largura = imagemOriginal.getWidth();
         int altura = imagemOriginal.getHeight();
@@ -36,19 +36,13 @@ public class GeradoraDeFigurinhas {
 
         //Configuração da Fonte
         var fonte= new Font(Font.SANS_SERIF, Font.BOLD, 128);
-        
         graphics.setFont(fonte);
         
         //Escrever uma frase na nova imagem
         
-        if(nota > 9){
-            graphics.setColor(Color.MAGENTA.darker());
-            graphics.drawString("NOTA: " + nota, 85, novaAltura -50);
-            }else{
-                graphics.setColor(Color.orange.darker());
-                graphics.drawString("NOTA: " + nota, 85, novaAltura -50);
-
-            }
+        graphics.setColor(Color.MAGENTA.darker());
+        graphics.drawString("LINDO", 80, novaAltura -50);
+            
 
         //Escrever a nova imagem em um novo arquivo
         
